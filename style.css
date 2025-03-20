@@ -36,7 +36,7 @@ button {
     cursor: pointer;
 }
 button:hover {
-    background: #ff1493;
+    background: #1f1c1e;
 }
 
 .game-container {
