@@ -23,8 +23,8 @@ function verificarSenha() {
 
 
 const images = [
-    "foto1.jpg", "foto2.jpg", "foto3.jpg", "foto4.jpg","foto5.jpg","foto6.jpg","foto7.jpg","foto8.jpg","foto9.jpg","foto10.jpg","foto11.jpg","foto12.jpg",
-    "foto1.jpg", "foto2.jpg", "foto3.jpg", "foto4.jpg","foto5.jpg","foto6.jpg","foto7.jpg","foto8.jpg","foto9.jpg","foto10.jpg","foto11.jpg","foto12.jpg",
+    "carrinho.png", "garota.jpg", "picole.jpg", "logo.png","sorvete.png","volume-alto.png","volume-baixo.png","urso.png","pinguim.png","bloqueio.png","sorveteria.png","sorvetinhos.jpg",
+    "carrinho.png", "garota.jpg", "picole.jpg", "logo.png","sorvete.png","volume-alto.png","volume-baixo.png","urso.png","pinguim.png","bloqueio.png","sorveteria.png","sorvetinhos.jpg",
 ];
 images.sort(() => 0.5 - Math.random());
 
@@ -55,6 +55,7 @@ images.forEach(image => {
                 firstCard = null;
                 secondCard = null;
                 lockBoard = false;
+                
             } else {
                 setTimeout(() => {
                     firstCard.classList.remove("flipped");

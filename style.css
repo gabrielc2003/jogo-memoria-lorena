@@ -1,3 +1,5 @@
+/* Tela de Login */
+
 body {
     display: flex;
     justify-content: center;
@@ -36,23 +38,27 @@ button {
     cursor: pointer;
 }
 button:hover {
-    background: #1f1c1e;
+    background: #bb589a;
 }
 
+/* Tela do Jogo */
+
 .game-container {
+    width: 1500px;
+    height: 860px;
     display: grid;
-    grid-template-columns: repeat(4, 100px);
-    grid-gap: 10px;
+    grid-template-columns: repeat(6, 100px);
+    grid-gap: 20px 120px;
     justify-content: center; /* Centraliza o jogo na tela */
     text-align: center;
-    background: white;
+    background: rgb(153, 152, 152);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 .card {
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
     background-color: pink;
     display: flex;
     justify-content: center;
@@ -60,13 +66,35 @@ button:hover {
     font-size: 24px;
     cursor: pointer;
     border-radius: 10px;
+    position: relative; /* Necessário para o ::before */
+    transition: transform 0.5s;
 }
+
+/* Adiciona o coração antes de qualquer conteúdo */
+.card::before {
+    content: "❤️"; /* Ou use um ícone de Font Awesome */
+    font-size: 80px;
+    color: red;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.3s; /* Efeito de desaparecimento */
+}
+
+/* A imagem dentro do card começa oculta */
 .card img {
     width: 100%;
     height: 100%;
     display: none;
-    border-radius: 10px;
+    border-radius: 15px;
 }
-.flipped img {
+
+/* Quando o card está flipado, o coração some e a imagem aparece */
+.card.flipped::before {
+    opacity: 0;
+}
+
+.card.flipped img {
     display: block;
 }
