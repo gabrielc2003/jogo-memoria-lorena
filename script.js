@@ -21,6 +21,10 @@ function verificarSenha() {
     }
 }
 
+document.getElementById('close-message').addEventListener('click', function() {
+    document.querySelector('.mensagem').style.display = 'none';
+});
+
 
 const images = [
     "carrinho.png", "garota.jpg", "picole.jpg", "logo.png","sorvete.png","volume-alto.png","volume-baixo.png","urso.png","pinguim.png","bloqueio.png","sorveteria.png","sorvetinhos.jpg",
