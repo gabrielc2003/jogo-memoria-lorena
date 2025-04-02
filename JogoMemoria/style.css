@@ -5,25 +5,29 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #ffe4e1;
+    background: linear-gradient(45deg, #73F0E2, #73ADF0, #7386F0, #73F0B8);
     font-family: Arial, sans-serif;
     overflow: hidden;
 }
+
 .mensagem{
     position: fixed; /* Cobrirá toda a tela */
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 228, 225, 0.8); /* Cor de fundo com transparência */
-    display: flex;
+    background-color: rgba(147, 209, 245, 0.8);
     justify-content: center;
     align-items: center;
-    z-index: 1000; /* Garante que fique acima de tudo */
-    color: #ff1493;
+    z-index: 1000; 
+    color: #7386F0;
     font-size: 2em;
     text-align: center;
     flex-direction: column;
+}
+
+.msg{
+    margin-top: 300px;
 }
 
 #close-message{
@@ -31,31 +35,40 @@ body {
     height: 50px;
     font-size: 20px;
 }
+
 .container {
+    width: 500px;
+    height: 400px;
+    color: #73F0E2;
     text-align: center;
-    background: white;
+    background:  rgba(131, 134, 136, 0.2);
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
 }
 input {
     padding: 10px;
     width: 80%;
+    height: 7%;
     margin-top: 10px;
-    border: 2px solid #ff69b4;
+    border: 2px solid #73F0E2;
     border-radius: 5px;
 }
 button {
-    margin-top: 10px;
+    width: 150px;
+    height: 50px;
+    margin-top: 20px;
     padding: 10px;
-    background: #ff69b4;
+    background: #80d0ff;
     color: white;
-    border: none;
+    border: solid #7386F0; /* Ordem: largura | estilo | cor */
     border-radius: 5px;
     cursor: pointer;
+    font-size: 18px;
 }
 button:hover {
-    background: #bb589a;
+    
+    background: #73F0E2;
 }
 
 /* Tela do Jogo */
@@ -68,10 +81,10 @@ button:hover {
     grid-gap: 20px 80px;
     justify-content: center; /* Centraliza o jogo na tela */
     text-align: center;
-    background: rgb(153, 152, 152);
+    background:  rgba(131, 134, 136, 0.2);
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.9);
     z-index: 1; /* Fica abaixo da mensagem */
     position: relative; /* Para contexto de empilhamento */
 
@@ -79,7 +92,7 @@ button:hover {
 .card {
     width: 130px;
     height: 150px;
-    background-color: pink;
+    background-color: #80d0ff;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -87,7 +100,7 @@ button:hover {
     cursor: pointer;
     border-radius: 10px;
     position: relative;
-    transform-style: preserve-3d; /* Importante para o efeito 3D */
+    transform-style: preserve-3d;
     transition: transform 0.6s; /* Tempo da animação */
 }
 
@@ -101,6 +114,7 @@ button:hover {
     left: 50%;
     transform: translate(-50%, -50%);
     backface-visibility: hidden; /* Esconde quando virada */
+
 }
 
 /* Verso da carta (a imagem) */
