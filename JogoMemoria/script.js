@@ -1,5 +1,5 @@
 function verificarSenha() {
-    var senhaCorreta = "Stella"; // Troque pelo seu nome ou outra resposta certa
+    var senhaCorreta = "Stella";
     var senhaDigitada = document.getElementById("senha").value;
     
     if (senhaDigitada.toLowerCase() === senhaCorreta.toLowerCase()) {
@@ -24,6 +24,7 @@ function verificarSenha() {
 document.getElementById('close-message').addEventListener('click', function() {
     document.querySelector('.mensagem').style.display = 'none';
 });
+
 
 const images = [
     "carrinho.png", "garota.jpg", "picole.jpg", "logo.png","sorvete.png","volume-alto.png","volume-baixo.png","urso.png","pinguim.png","bloqueio.png","sorveteria.png","sorvetinhos.jpg",
@@ -58,7 +59,8 @@ images.forEach(image => {
                 firstCard = null;
                 secondCard = null;
                 lockBoard = false;
-                
+                checkGameOver();
+
             } else {
                 setTimeout(() => {
                     firstCard.classList.remove("flipped");
@@ -73,3 +75,34 @@ images.forEach(image => {
     
     gameBoard.appendChild(card);
 });
+
+function checkGameOver() {
+    // Verifica se todas as cartas estão viradas
+    const allCardsFlipped = document.querySelectorAll('.card:not(.flipped)').length === 0;
+    
+    if (allCardsFlipped) {
+        // Mostra o SweetAlert quando o jogo acaba
+        Swal.fire({
+            title: "Parabéns xuxu! 🎉",
+            text: "Você encontrou todos os pares! ❤️",
+            icon: "success",
+            confirmButtonText: "Jogar novamente"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                resetGame(); 
+            }
+        });
+    }
+}
+
+function resetGame() {
+    // Remove a classe 'flipped' de todas as cartas
+    document.querySelectorAll('.card').forEach(card => {
+        card.classList.remove('flipped');
+    });
+    
+    // Embaralha as cartas novamente (se necessário)
+    setTimeout(() => {
+        // Sua lógica de embaralhar aqui
+    }, 500);
+}
