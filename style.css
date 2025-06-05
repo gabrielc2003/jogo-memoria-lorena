@@ -1,123 +1,188 @@
-/* Tela de Login */
+/* Reset básico e responsividade */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
+/* Tela de Login */
 body {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start; /* <-- Ajuste aqui */
     align-items: center;
-    height: 100vh;
-    background-color: #ffe4e1;
+    min-height: 100vh;
+    background: #1b0707;
     font-family: Arial, sans-serif;
-    overflow: hidden;
+    overflow-x: hidden;
 }
-.mensagem{
-    position: fixed; /* Cobrirá toda a tela */
+
+/* Container principal */
+.container,
+.game-container {
+    margin-bottom: auto; /* <-- Isso faz o conteúdo "empurrar" o rodapé para baixo */
+}
+
+/* Rodapé */
+footer.rodape {
+    width: 100%;
+    padding: 10px 0;
+    color: var(--cor-titulos, #000); /* Adiciona cor padrão se a variável não estiver definida */
+    background-color: #0d4223;
+    text-align: center;
+    font-family: var(--fonte-principal, Arial);
+    font-size: 1rem;
+}
+
+/* Tela de mensagem */
+.mensagem {
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 228, 225, 0.8); /* Cor de fundo com transparência */
+    background-color: rgba(147, 209, 245, 0.8);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000; /* Garante que fique acima de tudo */
-    color: #ff1493;
+    z-index: 1000;
+    color: #e74c3c;
     font-size: 2em;
     text-align: center;
     flex-direction: column;
 }
 
-#close-message{
+#close-message {
     width: 150px;
     height: 50px;
     font-size: 20px;
-
-
 }
 
+/* Container de login */
 .container {
+    margin-top: 300px;
+    width: 90%;
+    max-width: 500px;
+    color: #e74c3c;
     text-align: center;
-    background: white;
+    background: rgba(131, 134, 136, 0.2);
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
 }
+
+/* Campos de entrada */
 input {
     padding: 10px;
     width: 80%;
+    height: 40px;
     margin-top: 10px;
-    border: 2px solid #ff69b4;
+    border: 2px solid #2ecc71;
     border-radius: 5px;
 }
-button {
-    margin-top: 10px;
+
+/* Botões */
+button, #close-message {
+    width: 150px;
+    height: 50px;
+    margin-top: 20px;
     padding: 10px;
-    background: #ff69b4;
+    background: #e74c3c;
     color: white;
-    border: none;
+    border:none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 18px;
 }
-button:hover {
-    background: #bb589a;
+
+button:hover,
+#close-message:hover {
+    background: #2ecc71;
 }
 
 /* Tela do Jogo */
-
 .game-container {
-    width: 1100px;
-    height: 700px;
+    margin-top: 200px;
+    width: 95%;
+    max-width: 1000px;
     display: grid;
-    grid-template-columns: repeat(6, 100px);
-    grid-gap: 20px 80px;
-    justify-content: center; /* Centraliza o jogo na tela */
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-gap: 10px 60px;
+    justify-content: center;
     text-align: center;
-    background: rgb(153, 152, 152);
+    background: rgba(131, 134, 136, 0.2);
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    z-index: 1; /* Fica abaixo da mensagem */
-    position: relative; /* Para contexto de empilhamento */
-
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.9);
+    z-index: 1;
+    position: relative;
 }
+
 .card {
-    width: 130px;
-    height: 150px;
-    background-color: pink;
+    width: 100%;
+    aspect-ratio: 6 / 7;
+    background-color: #2ecc71;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 24px;
     cursor: pointer;
     border-radius: 10px;
-    position: relative; /* Necessário para o ::before */
-    transition: transform 0.5s;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+    border: solid #2ecc71;
 }
 
-/* Adiciona o coração antes de qualquer conteúdo */
+/* Frente da carta */
 .card::before {
-    content: "❤️"; /* Ou use um ícone de Font Awesome */
+    content: "❤️";
     font-size: 60px;
-    color: red;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    transition: opacity 0.3s; /* Efeito de desaparecimento */
+    backface-visibility: hidden;
 }
 
-/* A imagem dentro do card começa oculta */
+/* Verso da carta */
 .card img {
     width: 100%;
     height: 100%;
-    display: none;
-    border-radius: 15px;
+    object-fit: cover;
+    border-radius: 10px;
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+    position: absolute;
 }
 
-/* Quando o card está flipado, o coração some e a imagem aparece */
-.card.flipped::before {
-    opacity: 0;
+/* Quando a carta é virada */
+.card.flipped {
+    transform: rotateY(180deg);
 }
 
-.card.flipped img {
-    display: block;
+/* Responsividade */
+@media (max-width: 768px) {
+    .msg {
+        margin-top: 200px;
+        font-size: 1.5em;
+    }
+
+    button, #close-message {
+        width: 120px;
+        height: 40px;
+        font-size: 16px;
+    }
+
+    .card::before {
+        font-size: 40px;
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    .rodape {
+        font-size: 0.9rem;
+    }
 }

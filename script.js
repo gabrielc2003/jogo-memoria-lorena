@@ -1,5 +1,5 @@
 function verificarSenha() {
-    var senhaCorreta = "Stella"; // Troque pelo seu nome ou outra resposta certa
+    var senhaCorreta = "Guilherme";
     var senhaDigitada = document.getElementById("senha").value;
     
     if (senhaDigitada.toLowerCase() === senhaCorreta.toLowerCase()) {
@@ -27,8 +27,8 @@ document.getElementById('close-message').addEventListener('click', function() {
 
 
 const images = [
-    "carrinho.png", "garota.jpg", "picole.jpg", "logo.png","sorvete.png","volume-alto.png","volume-baixo.png","urso.png","pinguim.png","bloqueio.png","sorveteria.png","sorvetinhos.jpg",
-    "carrinho.png", "garota.jpg", "picole.jpg", "logo.png","sorvete.png","volume-alto.png","volume-baixo.png","urso.png","pinguim.png","bloqueio.png","sorveteria.png","sorvetinhos.jpg",
+    "foto1.jpg", "foto2.jpg", "foto3.jpg", "foto4.jpg","foto5.jpg","foto6.jpg","foto7.jpg","foto8.jpg","foto9.jpg","foto10.jpg","foto11.jpg","foto2.jpg",
+    "foto1.jpg", "foto2.jpg", "foto3.jpg", "foto4.jpg","foto5.jpg","foto6.jpg","foto7.jpg","foto8.jpg","foto9.jpg","foto10.jpg","foto11.jpg","foto2.jpg",
 ];
 images.sort(() => 0.5 - Math.random());
 
@@ -59,7 +59,8 @@ images.forEach(image => {
                 firstCard = null;
                 secondCard = null;
                 lockBoard = false;
-                
+                checkGameOver();
+
             } else {
                 setTimeout(() => {
                     firstCard.classList.remove("flipped");
@@ -74,3 +75,34 @@ images.forEach(image => {
     
     gameBoard.appendChild(card);
 });
+
+function checkGameOver() {
+    // Verifica se todas as cartas estão viradas
+    const allCardsFlipped = document.querySelectorAll('.card:not(.flipped)').length === 0;
+    
+    if (allCardsFlipped) {
+        // Mostra o SweetAlert quando o jogo acaba
+        Swal.fire({
+            title: "Parabéns xuxu! 🎉",
+            text: "Você encontrou todos os pares! ❤️",
+            icon: "success",
+            confirmButtonText: "Jogar novamente"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                resetGame(); 
+            }
+        });
+    }
+}
+
+function resetGame() {
+    // Remove a classe 'flipped' de todas as cartas
+    document.querySelectorAll('.card').forEach(card => {
+        card.classList.remove('flipped');
+    });
+    
+    // Embaralha as cartas novamente (se necessário)
+    setTimeout(() => {
+        // Sua lógica de embaralhar aqui
+    }, 500);
+}
