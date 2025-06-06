@@ -111,7 +111,6 @@ button:hover,
 }
 
 .container {
-    margin-top: 270px;
     width: 90%;
     max-width: 500px;
     color: #e74c3c;
@@ -208,6 +207,13 @@ button:hover,
         position: relative;
     }
 }
+
+@media (min-width: 769px) {
+    .container {
+        margin-top: 270px;
+    }
+}
+
 
 
 
