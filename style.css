@@ -17,21 +17,22 @@ body {
     overflow-x: hidden;
 }
 
-/* Container principal */
-.container,
-.game-container {
-    margin-bottom: auto; /* <-- Isso faz o conteúdo "empurrar" o rodapé para baixo */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Rodapé */
 footer.rodape {
     width: 100%;
     padding: 10px 0;
-    color: var(--cor-titulos, #c5c2c2); /* Adiciona cor padrão se a variável não estiver definida */
+    color: var(--cor-titulos, #c5c2c2); 
     background-color: #0d4223;
     text-align: center;
     font-family: var(--fonte-principal, Arial);
     font-size: 1rem;
+    
 }
 
 /* Tela de mensagem */
@@ -58,25 +59,14 @@ footer.rodape {
     font-size: 20px;
 }
 
-/* Container de login */
-.container {
-    margin-top: 150px;
-    width: 90%;
-    max-width: 500px;
-    color: #e74c3c;
-    text-align: center;
-    background: rgba(131, 134, 136, 0.2);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
-}
+
 
 /* Campos de entrada */
 input {
     padding: 10px;
     width: 80%;
     height: 40px;
-    margin-top: 10px;
+    margin-top: 30px;
     border: 2px solid #2ecc71;
     border-radius: 5px;
 }
@@ -102,6 +92,7 @@ button:hover,
 
 /* Tela do Jogo */
 .game-container {
+    flex: 1;
     margin-top: 70px;
     margin-bottom:70px;
     width: 95%;
@@ -117,6 +108,18 @@ button:hover,
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.9);
     z-index: 1;
     position: relative;
+}
+
+.container {
+    margin-top: 270px;
+    width: 90%;
+    max-width: 500px;
+    color: #e74c3c;
+    text-align: center;
+    background: rgba(131, 134, 136, 0.2);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
 }
 
 .card {
@@ -205,3 +208,6 @@ button:hover,
         position: relative;
     }
 }
+
+
+
