@@ -27,7 +27,7 @@ body {
 footer.rodape {
     width: 100%;
     padding: 10px 0;
-    color: var(--cor-titulos, #000); /* Adiciona cor padrão se a variável não estiver definida */
+    color: var(--cor-titulos, #c5c2c2); /* Adiciona cor padrão se a variável não estiver definida */
     background-color: #0d4223;
     text-align: center;
     font-family: var(--fonte-principal, Arial);
